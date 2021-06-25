@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zalopay Demo</title>
+    <link rel="stylesheet" href="./styles/style.scss" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid d-flex justify-content-between">
+        <a class="navbar-brand" href="#">
+          <img src="./images/logo-zalopay.svg" alt="zalo pay" />
+        </a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">History </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <form id="pay-form" class="container">
+      <ul class="nav nav-tabs mt-5 mb-5" id="myTab" role="tablist">
+        <li class="nav-item" role="tab">
+          <a
+            class="nav-link active"
+            id="qrpay-tab"
+            data-toggle="tab"
+            role="tab"
+            href="#qrpay"
+            aria-controls="qrpay"
+            aria-selected="true"
+          >
+            QR / Mobile Web to App
+          </a>
+        </li>
+        <li class="nav-item" role="tab">
+          <a
+            class="nav-link"
+            id="gateway-tab"
+            data-toggle="tab"
+            role="tab"
+            href="#gateway"
+            aria-controls="gateway"
+            aria-selected="false"
+          >
+            Gateway
+          </a>
+        </li>
+        <li class="nav-item" role="tab">
+          <a
+            class="nav-link"
+            id="quickpay-tab"
+            data-toggle="tab"
+            role="tab"
+            href="#quickpay"
+            aria-controls="quickpay"
+            aria-selected="false"
+          >
+            Quickpay
+          </a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div
+          class="tab-pane fade show active"
+          id="qrpay"
+          role="tabpanel"
+          aria-labelledby="qrpay-tab"
+        >
+          <div class="d-flex flex-column justify-content-center">
+            <div id="qrcontainer" class="d-none text-center">
+              <canvas id="qrcode" height="200" width="200"></canvas>
+              <p>
+                <a id="web2app-link">
+                  <small
+                    >Mở link này trên mobile để test Mobile Web To App</small
+                  >
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="gateway"
+          role="tabpanel"
+          aria-labelledby="gateway-tab"
+        >
+          <label>Thông tin thẻ test</label>
+          <ul>
+            <li><b>Số thẻ:</b> 4111111111111111</li>
+            <li><b>Tên:</b> NGUYEN VAN A</li>
+            <li><b>Ngày hết hạn:</b> 01/21</li>
+            <li><b>Mã CVV:</b> 123</li>
+          </ul>
+          <div class="form-group">
+            <label for="bankcode">Ngân hàng</label>
+            <select id="bankcode" class="form-control">
+              <option value="">Không chọn</option>
+            </select>
+          </div>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="quickpay"
+          role="tabpanel"
+          aria-labelledby="quickpay-tab"
+        >
+          <p id="loading" class="align-items-center mb-4 d-none">
+            <span class="spinner-border text-primary" role="status"></span>
+            <b class="text-primary ml-2">Đang xử lý...</b>
+          </p>
+          <div class="form-group">
+            <label for="paymentcode"
+              >Mã thanh toán <span class="text-danger">*</span></label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="paymentcode"
+              placeholder="Nhập mã thanh toán"
+            />
+            <small class="text-muted"
+              >Bạn có thể quét mã thanh toán
+              <a
+                href="https://mep.zpapps.vn/docs/quickpay/demo.html"
+                target="_blank"
+                >ở đây</a
+              >
+              (Click <img src="/images/scanicon.png" width="60" /> ở trường "Mã
+              thanh toán")</small
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="amount" class="form-label">Amount</label>
+        <input
+          type="number"
+          class="form-control"
+          id="amount"
+          placeholder="min value is 1000"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" rows="3"></textarea>
+      </div>
+      <div class="mb-3">
+        <button id="btn-submit" class="btn btn-primary" type="submit">Submit</button>
+      </div>
+    </form>
+
+    <script src="js/app.js"></script>
+    <script src="js/home.js"></script>
+  </body>
+</html>

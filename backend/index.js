@@ -32,7 +32,6 @@ app.ws("/subscribe", function (ws, req) {
   })
 })
 app.post("/callback", (req, res) => {
-  console.log(">>>>>>> callback", req.body)
   const { mac, ...params } = req.body
   const dataStr = JSON.stringify(params)
   const result = ZaloPay.VerifyCallback(dataStr, mac)

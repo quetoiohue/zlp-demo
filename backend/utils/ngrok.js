@@ -5,7 +5,7 @@ class Ngrok {
   async GetPublicURL() {
     const { data } = await axios.get(config.ngrok.tunnels)
     console.log("GetPublicURL --- ", data)
-    return "https://dbbb6a5df2ac.ngrok.io" || data.tunnels[0].public_url
+    return "http://localhost:4000" || data.tunnels[0].public_url
   }
 }
 

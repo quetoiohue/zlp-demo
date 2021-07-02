@@ -65,7 +65,6 @@ class ZaloPay {
     const { forward_callback } = JSON.parse(order.embeddata)
     const res = await axios.post(forward_callback, order)
 
-    console.log("res >>>>", res.data, forward_callback)
     OrderRepository.SaveOrder(order)
     return res
   }
